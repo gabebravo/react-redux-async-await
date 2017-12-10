@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, FormControl, 
-  ControlLabel, Button } from 'react-bootstrap';
+import { Form, FormGroup, Input, 
+  Label, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import RecipeList from './RecipeList';
@@ -26,22 +26,28 @@ class SearchRecipes extends Component {
   render(){
     return (
       <div>
-        <h3>Recipe Finder</h3>
-        <Form inline>
-          <FormGroup>
-            <ControlLabel>Ingredients</ControlLabel>{' '}
-            <FormControl type="text" placeholder="tofu, garlic, rice"
-              value={this.state.ingredients}
-              onChange={ e => this.setState({ ingredients: e.target.value }) } />
-          </FormGroup>{' '}
-          <FormGroup>
-          <ControlLabel>Dish</ControlLabel>{' '}
-            <FormControl type="text" placeholder="Garlic Tofu and Rice"
-              value={this.state.dish}
-              onChange={ e => this.setState({ dish: e.target.value }) } />
-          </FormGroup>{' '}
-          <Button onClick={this.submitForm}>Submit</Button>
-        </Form>
+        <div className="search-wrapper">
+          <div className="d-flex justify-content-center">
+            <h3 className="search-header">Recipe Finder</h3>
+          </div>
+          <div>
+            <Form style={{marginBottom: '3rem'}}>
+              <FormGroup className="search-form">
+                <Label>Ingredients</Label>
+                <Input type="text" placeholder="tofu, garlic, rice"
+                  value={this.state.ingredients}
+                  onChange={ e => this.setState({ ingredients: e.target.value }) } />
+              </FormGroup>
+              <FormGroup className="search-form">
+              <Label>Dish</Label>
+                <Input type="text" placeholder="Garlic Tofu and Rice"
+                  value={this.state.dish}
+                  onChange={ e => this.setState({ dish: e.target.value }) } />
+              </FormGroup>
+              <Button onClick={this.submitForm}>Submit</Button>
+            </Form>
+          </div>
+        </div>
         <RecipeList />
       </div>
     )

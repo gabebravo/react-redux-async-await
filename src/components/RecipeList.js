@@ -7,7 +7,7 @@ class RecipeList extends Component {
   render() {
     const { recipes, favorites } = this.props;
     return (
-      <div>
+      <div className="d-flex justify-content-center flex-wrap">
         {
           favorites.length > 0 ?
             <h4 className="link">
