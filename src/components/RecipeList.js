@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import RecipeItem from './RecipeItem';
 
 class RecipeList extends Component {
+
   render() {
     const { recipes, favorites } = this.props;
+      
     return (
       <div className="d-flex justify-content-center flex-wrap">
         {
@@ -17,12 +19,14 @@ class RecipeList extends Component {
             <div></div>
         }
         { recipes.length > 0 ?
-          this.props.recipes.map((recipe, index) => {
+          recipes.map((recipe, index) => {
             return (
               <RecipeItem 
                 key={index} 
                 recipe={recipe}
-                favoritePage={false}
+                favoritePage={
+                  favorites.indexOf(recipe) > -1 ? true : false
+                }
               />
             )
           }): <div></div>
